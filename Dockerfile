@@ -16,13 +16,14 @@ FROM mcr.microsoft.com/powershell:latest
 #RUN apt update && apt install -y powershell
 
 
-RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -force"
+# RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -force"
 # RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.Administration.PowerShell -force"
 # RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.PowerShell -AllowClobber -force"
 
 #FROM node:16 AS build
-WORKDIR /src
-COPY . .
 
+WORKDIR /usr/src/app
+
+COPY src .
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
