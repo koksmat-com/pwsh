@@ -16,7 +16,7 @@ FROM mcr.microsoft.com/powershell:latest
 #RUN apt update && apt install -y powershell
 
 
-# RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -force"
+RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -force"
 # RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.Administration.PowerShell -force"
 # RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.PowerShell -AllowClobber -force"
 
