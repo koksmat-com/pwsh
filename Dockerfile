@@ -21,7 +21,8 @@ RUN pwsh -c "Install-Module -Name ExchangeOnlineManagement -force"
 # RUN pwsh -c "Install-Module -Name Microsoft.PowerApps.PowerShell -AllowClobber -force"
 
 #FROM node:16 AS build
-COPY ./src .
+WORKDIR /src
+COPY . .
 
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
