@@ -6,4 +6,4 @@ WORKDIR /usr/src/app
 
 COPY src .
 
-ENTRYPOINT ["pwsh",  "getallmailboxes.ps1"]
+ENTRYPOINT ["pwsh",  "get-allmailboxes.ps1"]
