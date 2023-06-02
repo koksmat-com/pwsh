@@ -53,6 +53,11 @@ type recipientsType []struct {
 	DistinguishedName    string   `json:"DistinguishedName"`
 }
 
+type recipentData struct {
+	_Id  string
+	Data recipientsType
+}
+
 func main() {
 	fmt.Println("Hello, World!")
 	datapath := goDotEnvVariable("DATAOUT")
@@ -93,7 +98,12 @@ func main() {
 		panic(err)
 	}
 	dbs, err := client.ListDatabaseNames(context.TODO(), bson.M{})
+	databaseName := goDotEnvVariable("DATABASE")
 
+	recipientData := recipentData{}
+	recipientData._Id = "1"
+	recipientData.Data = recipients
+	client.Database(databaseName).Collection("recipients MASTER").InsertOne(context.TODO(), recipientData)
 	fmt.Println(strings.Join(dbs, "\n"))
 	// defer the closing of our jsonFile so that we can parse it later on
 	defer jsonFile.Close()
