@@ -1,0 +1,16 @@
+[
+  {
+    "Identity": "Nets IT CustomerPortal Dev-team Norway Mailbox",
+    "ExchangeObjectId": "f681efa8-c0bb-4bb8-ac82-9d6e86beb5c2",
+    "PrimarySmtpAddress": "it-cpdev-no@nets.eu",
+    "DisplayName": "Nets IT CustomerPortal Dev-team Norway Mailbox",
+    "CustomAttribute1": ""
+  },
+  {
+    "Identity": "Nets Sales Birger Jarlsgatan",
+    "ExchangeObjectId": "6ebef668-9d8b-4fe3-9d40-f641751f5944",
+    "PrimarySmtpAddress": "sales-birger-jarlsgatan@nets.eu",
+    "DisplayName": "Nets Sales Birger Jarlsgatan",
+    "CustomAttribute1": ""
+  }
+]

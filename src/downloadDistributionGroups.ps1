@@ -2,7 +2,7 @@
 . $PSScriptRoot/.connect.ps1
 
 Get-DistributionGroup -ResultSize unlimited 
-| select Id,Guid,ManagedBy,GroupType,SamAccountName,Description,Alias, `
+| select Id,ExchangeObjectId,Guid,ManagedBy,GroupType,SamAccountName,Description,Alias, `
   DisplayName,EmailAddresses,HiddenFromAddressListsEnabled,PrimarySmtpAddress, `
   RecipientType,RecipientTypeDetails,MailTip,MailTipTranslations,Name,DistinguishedName 
 | convertto-json
