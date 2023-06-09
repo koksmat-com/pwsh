@@ -11,16 +11,16 @@ if (![System.IO.File]::Exists($filePath0)) {
   | Out-File -Encoding utf8NoBOM  -FilePath $filePath0
 }
 else {
-  Write-Host "Resuming" 
+  Write-Output "Resuming" 
   $mailboxes = Get-Content  $filePath0  | Out-String | ConvertFrom-Json
 
 }
 
 
 foreach ($mailbox in $mailboxes) {
-  Write-Host "Getting members" $mailbox.DisplayName
+  Write-Output "Getting members" $mailbox.DisplayName
 
-  $filePath1 = "$($ENV:DATAOUT)/sharedmailboxpermissions-$($mailbox.PrimarySmtpAddress).json"
+  $filePath1 = "$($ENV:DATAOUT)/sharedmailboxpermissions-$($mailbox.ExchangeObjectId).json"
 
   if (![System.IO.File]::Exists($filePath1)) {
     Get-MailboxPermission -Identity $mailbox.ExchangeObjectId
@@ -30,7 +30,7 @@ foreach ($mailbox in $mailboxes) {
     | Out-File -Encoding utf8NoBOM -FilePath $filePath1
   }
    
-  $filePath2 = "$($ENV:DATAOUT)/sharedmailboxrecipientPermission-$($mailbox.PrimarySmtpAddress).json"
+  $filePath2 = "$($ENV:DATAOUT)/sharedmailboxrecipientPermission-$($mailbox.ExchangeObjectId).json"
   if (![System.IO.File]::Exists($filePath2)) {
     Get-RecipientPermission -Identity $mailbox.Identity
     | Where-Object { ($_.Trustee -like '*@*') }
@@ -40,6 +40,6 @@ foreach ($mailbox in $mailboxes) {
   }
    
 }
-  
+Write-Output "Done"
 convertto-json -InputObject $mailboxes
 | Out-File -Encoding utf8NoBOM "$($ENV:DATAOUT)/sharedmailboxes.json"

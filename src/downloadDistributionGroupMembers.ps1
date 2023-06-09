@@ -7,7 +7,7 @@ foreach ($group in $groups) {
   Get-DistributionGroupMember -Identity $group.Id
   | select Identity,PrimarySmtpAddress
   | convertto-json
-  | Out-File -Encoding utf8NoBOM "$($ENV:DATAOUT)/distributiongroupmembers-$($group.Id).json"
+  | Out-File -Encoding utf8NoBOM "$($ENV:DATAOUT)/distributiongroupmembers-$($group.ExchangeObjectId).json"
  
 }
 

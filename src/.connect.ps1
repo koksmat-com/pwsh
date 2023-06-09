@@ -1,4 +1,4 @@
-Write-Host "Connecting to Exchange"
+Write-Output "Connecting to Exchange"
 $EXCHAPPID = $env:EXCHAPPID
 $EXCHORGANIZATION = $env:EXCHORGANIZATION
 $EXCHCERTIFICATEPASSWORD = $env:EXCHCERTIFICATEPASSWORD
