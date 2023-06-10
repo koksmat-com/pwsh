@@ -15,10 +15,17 @@ else {
   $mailboxes = Get-Content  $filePath0  | Out-String | ConvertFrom-Json
 
 }
-
+$x  = 98
 
 foreach ($mailbox in $mailboxes) {
   Write-Output "Getting members" $mailbox.DisplayName
+  $x++
+
+  if ($x -gt 100) {
+    Write-Output "Reconnecting after 100 iterations"
+    . $PSScriptRoot/.connect.ps1
+    $x = 0
+  }
 
   $filePath1 = "$($ENV:DATAOUT)/sharedmailboxpermissions-$($mailbox.ExchangeObjectId).json"
 
