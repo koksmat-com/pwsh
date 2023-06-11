@@ -15,14 +15,16 @@ else {
   $mailboxes = Get-Content  $filePath0  | Out-String | ConvertFrom-Json
 
 }
-$x  = 98
+$x  = 0
+$i  = 0
+$total = $mailboxes.Count
 
 foreach ($mailbox in $mailboxes) {
-  Write-Output "Getting members" $mailbox.DisplayName
+  $i++
   $x++
-
+  Write-Output "$i of $total Getting members" $mailbox.DisplayName
   if ($x -gt 100) {
-    Write-Output "Reconnecting after 100 iterations"
+    Write-Output "Reconnecting after 100 iterations *********************************"
     . $PSScriptRoot/.connect.ps1
     $x = 0
   }
