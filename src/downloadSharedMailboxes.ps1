@@ -25,6 +25,7 @@ foreach ($mailbox in $mailboxes) {
   Write-Output "$i of $total Getting members" $mailbox.DisplayName
   if ($x -gt 100) {
     Write-Output "Reconnecting after 100 iterations *********************************"
+    Disconnect-ExchangeOnline -Confirm:$false
     . $PSScriptRoot/.connect.ps1
     $x = 0
   }
