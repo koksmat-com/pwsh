@@ -1,6 +1,6 @@
 
 . $PSScriptRoot/.connect.ps1
-
+Write-Output "Connected, starting to read permissions for all Shared Mailboxes"
 $filePath0 = "$($ENV:DATAOUT)/sharedmailboxes.temp.json"
 if (![System.IO.File]::Exists($filePath0)) {
   $mailboxes = Get-Mailbox -RecipientTypeDetails SharedMailbox -ResultSize Unlimited
@@ -23,7 +23,7 @@ foreach ($mailbox in $mailboxes) {
   $i++
   $x++
   Write-Output "$i of $total Getting members" $mailbox.DisplayName
-  if ($x -gt 100) {
+  if ($x -gt 99) {
     Write-Output "Reconnecting after 100 iterations *********************************"
     Disconnect-ExchangeOnline -Confirm:$false
     . $PSScriptRoot/.connect.ps1
